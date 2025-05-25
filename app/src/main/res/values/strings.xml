@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Annapurna Seva</string>
+    <string name="post_food">Post Food</string>
+    <string name="expiry_date_e_g_2025_12_31">Expiry Date (e.g., 2025-12-31)</string>
+    <string name="food_name">Food Name</string>
+    <string name="quantity">Quantity</string>
+</resources>
