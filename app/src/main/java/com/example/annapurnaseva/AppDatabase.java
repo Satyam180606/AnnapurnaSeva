@@ -1,30 +1,7 @@
 package com.example.annapurnaseva;
 
-import android.content.Context;
-import androidx.room.Database;
-import androidx.room.Room;
-import androidx.room.RoomDatabase;
-
-@Database(entities = {Restaurant.class, NGO.class, FoodItem.class}, version = 1, exportSchema = false)
-public abstract class AppDatabase extends RoomDatabase {
-
-    public abstract RestaurantDao restaurantDao();
-    public abstract NGODao ngoDao();
-    public abstract FoodItemDao foodItemDao();
-
-    private static volatile AppDatabase INSTANCE;
-
-    public static AppDatabase getDatabase(final Context context) {
-        if (INSTANCE == null) {
-            synchronized (AppDatabase.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    AppDatabase.class, "app_database")
-                            .fallbackToDestructiveMigration()
-                            .build();
-                }
-            }
-        }
-        return INSTANCE;
-    }
+// This dummy class stands in for a Room database even though we use Firebase.
+// It does nothing and isn’t annotated with any Room annotations.
+public class AppDatabase {
+    // You can keep this empty or add any helper methods that you need.
 }

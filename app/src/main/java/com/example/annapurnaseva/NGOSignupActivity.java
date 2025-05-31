@@ -1,60 +1,78 @@
 package com.example.annapurnaseva;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class NGOSignupActivity extends AppCompatActivity {
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-    private EditText etNgoName, etRegistrationNumber, etOfficeAddress, etUsername, etPassword;
+import java.util.HashMap;
+import java.util.Map;
+
+public class NGOSignupActivity extends AppCompatActivity {
+    private static final String TAG = "NGOSignupActivity";
+    private EditText etNGOName, etGovernmentId, etLocation, etUsername, etPassword;
     private Button btnSignUp;
-    private AppDatabase db;
+    private DatabaseReference ngosRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ngo_signup);
+        // Update the file name here if needed:
+        setContentView(R.layout.activity_ngosignup);
 
-        etNgoName = findViewById(R.id.etNgoName);
-        etRegistrationNumber = findViewById(R.id.etRegistrationNumber);
-        etOfficeAddress = findViewById(R.id.etOfficeAddress);
+        etNGOName = findViewById(R.id.etNGOName);
+        etGovernmentId = findViewById(R.id.etGovernmentId);
+        etLocation = findViewById(R.id.etLocation);
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnSignUp = findViewById(R.id.btnSignUp);
 
-        db = AppDatabase.getDatabase(getApplicationContext());
+        ngosRef = FirebaseDatabase.getInstance().getReference("ngos");
 
-        btnSignUp.setOnClickListener(v -> {
-            final String ngoName = etNgoName.getText().toString().trim();
-            final String regNumber = etRegistrationNumber.getText().toString().trim();
-            final String officeAddress = etOfficeAddress.getText().toString().trim();
-            final String username = etUsername.getText().toString().trim();
-            final String password = etPassword.getText().toString().trim();
+        btnSignUp.setOnClickListener(v -> signupUser());
+    }
 
-            if (TextUtils.isEmpty(ngoName) || TextUtils.isEmpty(regNumber)
-                    || TextUtils.isEmpty(officeAddress) || TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
-                Toast.makeText(NGOSignupActivity.this, "Please fill all fields", Toast.LENGTH_LONG).show();
-                return;
-            }
+    private void signupUser() {
+        String ngoName = etNGOName.getText().toString().trim();
+        String governmentId = etGovernmentId.getText().toString().trim();
+        String location = etLocation.getText().toString().trim();
+        String username = etUsername.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
 
-            NGO ngo = new NGO();
-            ngo.setNgoName(ngoName);
-            ngo.setRegistrationNumber(regNumber);
-            ngo.setOfficeAddress(officeAddress);
-            ngo.setUsername(username);
-            ngo.setPassword(password);
+        if (TextUtils.isEmpty(ngoName) || TextUtils.isEmpty(governmentId) ||
+                TextUtils.isEmpty(location) || TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-            new Thread(() -> {
-                long id = db.ngoDao().insertNGO(ngo);
-                runOnUiThread(() -> {
-                    Toast.makeText(NGOSignupActivity.this, "Sign Up Successful. Please log in.", Toast.LENGTH_LONG).show();
-                    finish();
+        Map<String, Object> userMap = new HashMap<>();
+        userMap.put("ngoName", ngoName);
+        userMap.put("governmentId", governmentId);
+        userMap.put("location", location);
+        userMap.put("username", username);
+        userMap.put("password", password);
+
+        ngosRef.child(username).setValue(userMap)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(NGOSignupActivity.this, "Signup Successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(NGOSignupActivity.this, NGOActivity.class);
+                        intent.putExtra("username", username);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        String err = (task.getException() != null) ? task.getException().getMessage() : "Unknown error";
+                        Toast.makeText(NGOSignupActivity.this, "Error saving details: " + err, Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "Error saving NGO details: " + err);
+                    }
                 });
-            }).start();
-        });
     }
 }

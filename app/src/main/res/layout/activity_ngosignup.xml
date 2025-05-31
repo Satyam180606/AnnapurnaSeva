@@ -11,31 +11,31 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- Header for Restaurant Signup -->
+        <!-- Header for NGO Signup -->
         <TextView
-            android:id="@+id/tvRestaurantSignupHeader"
+            android:id="@+id/tvNGOSignupHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Restaurant Signup - Annapurna Seva"
+            android:text="NGO Signup - Annapurna Seva"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginBottom="24dp" />
 
-        <!-- Restaurant Name Input Field -->
+        <!-- NGO Name Input Field -->
         <EditText
-            android:id="@+id/etRestaurantName"
+            android:id="@+id/etNGOName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Restaurant Name"
+            android:hint="NGO Name"
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
-        <!-- FSSAI Code Input Field -->
+        <!-- Government ID Input Field -->
         <EditText
-            android:id="@+id/etFssaiCode"
+            android:id="@+id/etGovernmentId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="FSSAI Code"
+            android:hint="Government ID"
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:text="Sign Up"
             android:textColor="@android:color/white"
-            android:backgroundTint="@android:color/holo_green_dark" />
+            android:backgroundTint="@android:color/holo_green_dark"/>
 
     </LinearLayout>
 </ScrollView>

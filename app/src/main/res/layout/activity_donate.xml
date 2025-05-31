@@ -11,70 +11,60 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- Header for Restaurant Signup -->
+        <!-- Header for Donate Food -->
         <TextView
-            android:id="@+id/tvRestaurantSignupHeader"
+            android:id="@+id/tvDonateHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Restaurant Signup - Annapurna Seva"
+            android:text="Donate Food at Annapurna Seva"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginBottom="24dp" />
 
-        <!-- Restaurant Name Input Field -->
+        <!-- Input Field: Food Name -->
         <EditText
-            android:id="@+id/etRestaurantName"
+            android:id="@+id/etFoodName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Restaurant Name"
+            android:hint="Food Name"
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
-        <!-- FSSAI Code Input Field -->
+        <!-- Input Field: Food Description -->
         <EditText
-            android:id="@+id/etFssaiCode"
+            android:id="@+id/etFoodDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="FSSAI Code"
+            android:hint="Food Description"
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
-        <!-- Location Input Field -->
+        <!-- Input Field: Food Price -->
         <EditText
-            android:id="@+id/etLocation"
+            android:id="@+id/etFoodPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Location"
+            android:hint="Price (in INR)"
+            android:inputType="numberDecimal"
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
-        <!-- Username Input Field -->
+        <!-- Input Field: Food Image URL (optional) -->
         <EditText
-            android:id="@+id/etUsername"
+            android:id="@+id/etFoodImageUrl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Password Input Field -->
-        <EditText
-            android:id="@+id/etPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
+            android:hint="Image URL (optional)"
             android:padding="12dp"
             android:layout_marginBottom="24dp" />
 
-        <!-- Signup Button -->
+        <!-- Button to Post Donation -->
         <Button
-            android:id="@+id/btnSignUp"
+            android:id="@+id/btnPostDonation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:textColor="@android:color/white"
-            android:backgroundTint="@android:color/holo_green_dark" />
-
+            android:text="Post Donation"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 </ScrollView>

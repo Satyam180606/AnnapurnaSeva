@@ -4,4 +4,6 @@
     <string name="expiry_date_e_g_2025_12_31">Expiry Date (e.g., 2025-12-31)</string>
     <string name="food_name">Food Name</string>
     <string name="quantity">Quantity</string>
+    <string name="welcome">Welcome!</string>
+    <string name="logout">Logout</string>
 </resources>

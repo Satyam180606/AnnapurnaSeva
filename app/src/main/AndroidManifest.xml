@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- The LoginActivity is the launcher -->
+        <!-- Common Login Activity is set as the launcher -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -20,9 +20,24 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <!-- Restaurant donation posting activity -->
+        <activity android:name=".DonateActivity" />
+
+        <!-- Signup Activities -->
         <activity android:name=".RestaurantSignupActivity" />
         <activity android:name=".NGOSignupActivity" />
+
+        <!-- Dashboard Activities -->
         <activity android:name=".RestaurantActivity" />
         <activity android:name=".NGOActivity" />
+
+        <!-- NGO Request Donation Activity -->
+        <activity android:name=".RequestDonationActivity" />
+
+        <!-- Donations List Activity -->
+        <activity android:name=".DonationsListActivity" />
+        <activity android:name=".DonationRequestsActivity" />
+
     </application>
 </manifest>

@@ -1,26 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ngoRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- Header for NGO Dashboard -->
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:text="Welcome, NGO"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="24dp"/>
 
-        <TextView
-            android:id="@+id/tvFoodList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Food items will be displayed here" />
+    <!-- Button to view donations posted by restaurants -->
+    <Button
+        android:id="@+id/btnDonations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Donations"
+        android:layout_marginBottom="16dp"/>
 
-        <Button
-            android:id="@+id/btnSignOut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sign Out"
-            android:layout_marginTop="16dp"/>
-    </LinearLayout>
-</ScrollView>
+    <!-- Button to request a donation -->
+    <Button
+        android:id="@+id/btnRequestDonation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Request a Donation"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Logout Button -->
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"/>
+</LinearLayout>
